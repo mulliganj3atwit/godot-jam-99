@@ -1,3 +1,48 @@
 [gd_scene format=3 uid="uid://3g4vrivsch8f"]
 
+[ext_resource type="Texture2D" uid="uid://bi1coeivkepv3" path="res://assets/images/1-miner-front.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bpaxvyvobvevm" path="res://scenes/player.gd" id="1_dqkch"]
+[ext_resource type="Texture2D" uid="uid://mslmqpxaeaa1" path="res://assets/images/1-miner-left.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://pryvpow1vkqm" path="res://assets/images/1-miner-right.png" id="3_dqkch"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": 1,
+"name": &"idleD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qhqgy")
+}],
+"loop": 1,
+"name": &"idleL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dqkch")
+}],
+"loop": 1,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vivr"]
+radius = 8.0
+height = 40.0
+
 [node name="Player" type="CharacterBody2D" unique_id=172045430]
+script = ExtResource("1_dqkch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=332996601]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"running"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772378338]
+shape = SubResource("CapsuleShape2D_1vivr")
