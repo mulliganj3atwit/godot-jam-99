@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c1ic8bn221x3r"]
+
+[ext_resource type="Script" uid="uid://dwgk5tlm7gybb" path="res://scripts/drill.gd" id="1_e80ml"]
+[ext_resource type="Texture2D" uid="uid://dhp43qmoaptvd" path="res://assets/images/1-drill-side.png" id="2_e80ml"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e80ml")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
+size = Vector2(21, 19.5)
+
+[node name="Drill" type="Area2D" unique_id=1370343338]
+script = ExtResource("1_e80ml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1975073754]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1vivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1129397078]
+position = Vector2(2.5, 0.25)
+shape = SubResource("RectangleShape2D_v5gy4")

@@ -1,0 +1,24 @@
+extends Node2D
+
+@onready var player: CharacterBody2D = $Player
+@onready var tile_map_layer: TileMapLayer = $TileMapLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_player_digging(mouse_pos: Vector2):
+	var tile_pos = tile_map_layer.local_to_map(tile_map_layer.to_local(mouse_pos))
+	var tile_dat = tile_map_layer.get_cell_tile_data(tile_pos)
+	
+	if tile_dat:
+		if tile_dat.get_custom_data("Digable"):
+			print("Diggin %s", tile_pos)
+			await get_tree().create_timer(2.0).timeout
+			tile_map_layer.erase_cell(tile_pos)
