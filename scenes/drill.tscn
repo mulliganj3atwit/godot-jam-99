@@ -10,7 +10,7 @@ animations = [{
 "texture": ExtResource("2_e80ml")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"mining",
 "speed": 5.0
 }]
 
@@ -23,6 +23,8 @@ script = ExtResource("1_e80ml")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1975073754]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"mining"
+autoplay = "mining"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1129397078]
 position = Vector2(2.5, 0.25)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dng03k333neqn" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://3g4vrivsch8f" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://c1ic8bn221x3r" path="res://scenes/drill.tscn" id="3_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://76gj3gk4ag71" path="res://assets/images/16x16-stone.png" id="3_sugp2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
@@ -21,6 +22,7 @@ script = ExtResource("1_jyhfs")
 
 [node name="Player" parent="." unique_id=172045430 instance=ExtResource("1_o5qli")]
 position = Vector2(580, 62)
+drill = ExtResource("3_jyhfs")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2054880572]
 texture_filter = 1

@@ -19,6 +19,6 @@ func _on_player_digging(mouse_pos: Vector2):
 	
 	if tile_dat:
 		if tile_dat.get_custom_data("Digable"):
-			print("Diggin %s", tile_pos)
+			print("Digging ", tile_pos)
 			await get_tree().create_timer(2.0).timeout
 			tile_map_layer.erase_cell(tile_pos)

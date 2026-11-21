@@ -1,16 +1,29 @@
 extends CharacterBody2D
 
+@export var drill: PackedScene
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon_mount: Marker2D = $WeaponMount
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DIGGING_RANGE = 75.0
+const DRILL_OFFSET = 15.0
 
-var is_digging
-signal digging
+var is_digging: bool = false
+var current_drill: Node2D = null
+signal digging(target_pos: Vector2)
 
 func _physics_process(delta: float) -> void:
 	
-	if is_digging:
+	if is_digging and current_drill != null:
+		var mouse_pos := get_global_mouse_position()
+		var dir := global_position.direction_to(mouse_pos)
+		
+		weapon_mount.position = dir * DRILL_OFFSET
+		weapon_mount.rotation = dir.angle()
+		
+		current_drill.scale.y = -1.0 if get_global_mouse_position().x < global_position.x else 1.0
+		
 		if position.distance_to(get_global_mouse_position()) < DIGGING_RANGE:
 			digging.emit(get_global_mouse_position())
 	
@@ -44,8 +57,22 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("action"):
 		is_digging = true
+		_equip_drill(drill)
 		get_viewport().set_input_as_handled()
 	
 	if event.is_action_released("action"):
 		is_digging = false
+		_unequip_drill()
 		get_viewport().set_input_as_handled()
+		
+
+func _equip_drill(new_drill: PackedScene = drill) -> void:
+	if new_drill == null or current_drill != null:
+		return
+	current_drill = new_drill.instantiate()
+	weapon_mount.add_child(current_drill)
+	
+func _unequip_drill() -> void:
+	if current_drill != null:
+		current_drill.queue_free()
+		current_drill = null
