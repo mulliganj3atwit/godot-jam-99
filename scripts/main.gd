@@ -20,5 +20,9 @@ func _on_player_digging(mouse_pos: Vector2):
 	if tile_dat:
 		if tile_dat.get_custom_data("Digable"):
 			print("Digging ", tile_pos)
-			await get_tree().create_timer(2.0).timeout
-			tile_map_layer.erase_cell(tile_pos)
+			var health = tile_dat.get_custom_data("Health")
+			tile_dat.set_custom_data("Health", health - 1)
+			await get_tree().create_timer(.5).timeout
+			if tile_dat.get_custom_data("Health") <= 0:
+				tile_map_layer.erase_cell(tile_pos)
+			
