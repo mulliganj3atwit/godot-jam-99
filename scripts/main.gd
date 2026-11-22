@@ -9,7 +9,7 @@ extends Node2D
 
 
 var time_left: int = 0
-var start_time: int = 300
+var start_time: int = 120
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
