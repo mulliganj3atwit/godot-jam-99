@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const DIGGING_RANGE = 75.0
+const DIGGING_RANGE = 50.0
 const DRILL_OFFSET = 15.0
 
 var is_digging: bool = false
