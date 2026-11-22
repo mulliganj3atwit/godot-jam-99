@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ds1yhnf5n20ug" path="res://assets/images/stone-T1.png" id="7_85g3d"]
 [ext_resource type="Texture2D" uid="uid://boyg0r2qh28gp" path="res://assets/images/stone-T2.png" id="8_choun"]
 [ext_resource type="Texture2D" uid="uid://dlub6ik5vdtbr" path="res://assets/images/stone-T3.png" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://bhmxlxduaqeel" path="res://scenes/fade.tscn" id="10_choun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
 texture = ExtResource("3_sugp2")
@@ -70,6 +71,9 @@ sources/5 = SubResource("TileSetAtlasSource_a8y0u")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tefeu"]
 distance = -1152.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2cw3"]
+size = Vector2(1152, 55)
+
 [node name="Main" type="Node2D" unique_id=50933285]
 script = ExtResource("1_jyhfs")
 
@@ -97,4 +101,14 @@ shape = SubResource("WorldBoundaryShape2D_tefeu")
 one_way_collision = true
 one_way_collision_direction = Vector2(0, 0)
 
+[node name="Area2D" type="Area2D" parent="." unique_id=805730716]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1071568506]
+position = Vector2(577, 732.5)
+shape = SubResource("RectangleShape2D_t2cw3")
+
+[node name="Fade" parent="." unique_id=664368778 instance=ExtResource("10_choun")]
+visible = false
+
 [connection signal="digging" from="Player" to="." method="_on_player_digging"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

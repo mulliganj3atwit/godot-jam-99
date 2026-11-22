@@ -1,9 +1,12 @@
 extends Node2D
-
+@onready var label: Label = $Fade/Label
 @onready var player: CharacterBody2D = $Player
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var timer_text: Label = $Player/UI/Control/TimerPanel/TimerText
 @onready var timer: Timer = $Player/Timer
+@onready var area_2d: Area2D = $Area2D
+@onready var fade: CanvasLayer = $Fade
+
 
 var time_left: int = 0
 var start_time: int = 300
@@ -49,3 +52,10 @@ func _on_timer_timeout() -> void:
 		
 func _on_countdown_finished() -> void:
 	pass
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		await fade.fade(1.0, .5).finished
+		label.visible = true
+		print("We are proud")

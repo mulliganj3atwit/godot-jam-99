@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bhmxlxduaqeel"]
+
+[ext_resource type="Script" uid="uid://cymrfl74lxoth" path="res://scenes/fade.gd" id="1_nukjo"]
+
+[node name="Fade" type="CanvasLayer" unique_id=664368778]
+script = ExtResource("1_nukjo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1224402276]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1994395567]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 177.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over
+
+Sound Effect Credit: freesound_community
+
+Game by:
+Jeffrey Masters - Programming
+Joseph Mulligan - Art (some programming)
+
+Thanks for playing our first attempt at a game"
+horizontal_alignment = 1
+vertical_alignment = 1
