@@ -51,7 +51,8 @@ func _on_timer_timeout() -> void:
 		_on_countdown_finished()
 		
 func _on_countdown_finished() -> void:
-	pass
+	await fade.fade(1.0, .5).finished
+	label.visible = true
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
